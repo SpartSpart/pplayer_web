@@ -128,10 +128,10 @@ export default function App() {
   // Helper to determine the media source to load
   const getVideoSrc = (trackName) => {
     if (!trackName) return '';
-    const cleanTrack = trackName.startsWith('./') 
-      ? trackName.slice(2) 
-      : trackName.startsWith('/') 
-        ? trackName.slice(1) 
+    const cleanTrack = trackName.startsWith('./')
+      ? trackName.slice(2)
+      : trackName.startsWith('/')
+        ? trackName.slice(1)
         : trackName;
     return `${import.meta.env.BASE_URL}${cleanTrack}`;
   };
@@ -257,7 +257,7 @@ export default function App() {
           </a>
 
           {/* Mobile menu toggle button */}
-          <button 
+          <button
             className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Mobile Menu"
@@ -871,7 +871,7 @@ export default function App() {
                   <div className="info-icon">💻</div>
                   <div className="info-details">
                     <h4>GitHub</h4>
-                    <a href="https://github.com/pplayer/pplayer" target="_blank" rel="noopener noreferrer" className="info-link">github.com/pplayer</a>
+                    <a href="https://github.com/SpartSpart/pplayer_web" target="_blank" rel="noopener noreferrer" className="info-link">github.com/pplayer</a>
                   </div>
                 </div>
               </div>
