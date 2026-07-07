@@ -9,7 +9,7 @@
   <!-- Google Analytics -->
   <script>
     const gaId = "G-MKFEDXNJ57";
-    if (gaId && gaId !== "G-MKFEDXNJ57") {
+    if (gaId && !gaId.startsWith("%")) {
       const script = document.createElement('script');
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
