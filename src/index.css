@@ -152,6 +152,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo-text span {
   background: linear-gradient(135deg, var(--accent-purple), var(--accent-indigo));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -295,6 +296,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
   background: linear-gradient(180deg, #ffffff 40%, rgba(255,255,255,0.7) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -906,6 +908,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.01));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   position: absolute;
   top: 1rem;
@@ -1709,4 +1712,150 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   Mobile Responsive Adjustments (< 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  /* Mobile Menu Toggle Button */
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 120;
+  }
+
+  .mobile-menu-toggle .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: var(--transition-smooth);
+    border-radius: 2px;
+  }
+
+  /* Hamburger Animation to active 'X' */
+  .mobile-menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .mobile-menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Mobile Navigation Slide-Over Menu (Glassmorphism) */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(8, 8, 9, 0.95);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-left: 1px solid var(--border-subtle);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    transition: var(--transition-smooth);
+    z-index: 110;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-menu.open {
+    right: 0;
+  }
+
+  /* Hero Section scaling */
+  .hero-section {
+    padding-top: 140px;
+    padding-bottom: 50px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  /* Interactive Preview Simulator sizing adjustment */
+  .mock-player {
+    border-radius: var(--radius-md);
+  }
+}
+
+/* ==========================================
+   Small Mobile Devices Settings (< 576px)
+   ========================================== */
+@media (max-width: 576px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .feature-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .step-card {
+    padding: 1.5rem;
+  }
+
+  /* Centered footer for small devices */
+  .footer-wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .footer-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+
+  /* Tabs selection lists */
+  .tabs-header-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .tabs-list {
+    justify-content: space-between;
+  }
+
+  .auth-badge-status {
+    justify-content: center;
+  }
 }

@@ -31,6 +31,7 @@ export default function App() {
   const [volume, setVolume] = useState(80);
   const [isPaused, setIsPaused] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Contact Form State
   const [contactName, setContactName] = useState('');
@@ -255,19 +256,33 @@ export default function App() {
             <span className="logo-text">P<span>Player</span></span>
           </a>
 
+          {/* Mobile menu toggle button */}
+          <button 
+            className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Mobile Menu"
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
+
           <nav>
-            <ul className="nav-menu">
-              <li><a href="#preview-simulator" className="nav-link">{t('nav_demo')}</a></li>
-              <li><a href="#features" className="nav-link">{t('nav_features')}</a></li>
-              <li><a href="#how-it-works" className="nav-link">{t('nav_howitworks')}</a></li>
-              <li><a href="#download" className="nav-link">{t('nav_download')}</a></li>
-              <li><a href="#support" className="nav-link">{t('nav_support')}</a></li>
-              <li><a href="#contact" className="nav-link">{t('nav_contact')}</a></li>
+            <ul className={`nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+              <li><a href="#preview-simulator" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('nav_demo')}</a></li>
+              <li><a href="#features" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('nav_features')}</a></li>
+              <li><a href="#how-it-works" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('nav_howitworks')}</a></li>
+              <li><a href="#download" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('nav_download')}</a></li>
+              <li><a href="#support" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('nav_support')}</a></li>
+              <li><a href="#contact" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>{t('nav_contact')}</a></li>
               <li>
                 <select
                   className="nav-lang-select"
                   value={language}
-                  onChange={handleLanguageChange}
+                  onChange={(e) => {
+                    handleLanguageChange(e);
+                    setIsMobileMenuOpen(false);
+                  }}
                   aria-label="Language Selector"
                 >
                   <option value="en">English</option>
