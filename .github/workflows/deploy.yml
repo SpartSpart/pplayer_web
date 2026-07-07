@@ -20,6 +20,10 @@ jobs:
         run: |
           npm ci
           npm run build
+        env:
+          # This reads values securely from your GitHub Secrets during compilation
+          VITE_FORMSPREE_ID: ${{ secrets.VITE_FORMSPREE_ID }}
+          VITE_DESTREAM_URL: ${{ secrets.VITE_DESTREAM_URL }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
