@@ -127,13 +127,12 @@ export default function App() {
   // Helper to determine the media source to load
   const getVideoSrc = (trackName) => {
     if (!trackName) return '';
-    if (trackName.startsWith('./')) {
-      return trackName.substring(1); // Converts "./tracks/..." to "/tracks/..."
-    }
-    if (trackName.startsWith('/')) {
-      return trackName;
-    }
-    return `/tracks/${trackName}`;
+    const cleanTrack = trackName.startsWith('./') 
+      ? trackName.slice(2) 
+      : trackName.startsWith('/') 
+        ? trackName.slice(1) 
+        : trackName;
+    return `${import.meta.env.BASE_URL}${cleanTrack}`;
   };
 
   // Helper to extract filename from track path
@@ -252,7 +251,7 @@ export default function App() {
       <header className="header-nav">
         <div className="container nav-wrapper">
           <a href="#" className="logo-container">
-            <img src="/logo.png" alt="PPlayer logo" className="logo-img" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="PPlayer logo" className="logo-img" />
             <span className="logo-text">P<span>Player</span></span>
           </a>
 
@@ -319,7 +318,7 @@ export default function App() {
               {/* 1. Windows titlebar */}
               <div className="window-titlebar">
                 <div className="titlebar-left">
-                  <img src="/logo.png" alt="PPlayer Icon" className="titlebar-icon" />
+                  <img src={`${import.meta.env.BASE_URL}logo.png`} alt="PPlayer Icon" className="titlebar-icon" />
                   <span className="titlebar-text">PPlayer</span>
                 </div>
                 <div className="titlebar-right">
