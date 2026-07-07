@@ -43,6 +43,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px; /* Offset for the sticky header */
+  overflow-x: hidden;
 }
 
 body {
@@ -1755,7 +1756,7 @@ h1, h2, h3, h4, h5, h6 {
   .nav-menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 75%;
     max-width: 320px;
     height: 100vh;
@@ -1768,13 +1769,16 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 2rem;
     padding: 3rem 2rem;
-    transition: var(--transition-smooth);
     z-index: 110;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
   }
 
   .nav-menu.open {
-    right: 0;
+    transform: translateX(0);
+    visibility: visible;
   }
 
   /* Hero Section scaling */
