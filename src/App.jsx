@@ -866,14 +866,6 @@ export default function App() {
                     <a href="mailto:support@pplayer.app" className="info-link">support@pplayer.app</a>
                   </div>
                 </div>
-
-                <div className="glass-panel contact-info-card">
-                  <div className="info-icon">💻</div>
-                  <div className="info-details">
-                    <h4>GitHub</h4>
-                    <a href="https://github.com/SpartSpart/pplayer_web" target="_blank" rel="noopener noreferrer" className="info-link">github.com/pplayer</a>
-                  </div>
-                </div>
               </div>
 
               {/* Contact Email Sender Form */}
